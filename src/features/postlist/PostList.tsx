@@ -1,32 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { fetchPosts } from './postlistSlice';
 import { RootState } from '../../app/rootReducer';
-import { getPosts, PostResults } from '../../app/api/postAPI'
+// import { getPosts, PostResults } from '../../app/api/postAPI'
 
 
 export function PostList() {
   const dispatch = useDispatch()
-  const [postsResult, setPosts] = useState<PostResults>({ posts: [] })
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [issuesError, setIssuesError] = useState<Error | null>(null)
-  const openIssueCount = useSelector(
-    (state: RootState) => state.posts
+  const { postsLoading, postsError, postsResults } = useSelector(
+    (state: RootState) => {
+      console.log(state.postsResults.posts)
+      return {
+        postsLoading: state.postsResults.loading,
+        postsError: state.postsResults.error,
+        postsResults: state.postsResults
+      }
+    },
+    shallowEqual
   )
 
   useEffect(() => {
-    async function fetchPosts() {
-      const posts = await getPosts()
-      setPosts(posts)
-    }
-
-    fetchPosts()
-  })
+    dispatch(fetchPosts())
+  }, [dispatch])
 
   const renderedPosts = (
-    postsResult ? postsResult.posts.map(post => {
+    postsResults.posts ? postsResults.posts.map(post => {
+
       return <li><h2>{post.title}</h2><p>{post.body}</p></li>
-    }) : null
+    }) : <div>No Posts Available</div>
   )
 
   return (<div><ul>{renderedPosts}</ul></div>);

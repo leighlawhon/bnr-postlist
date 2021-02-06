@@ -6,33 +6,42 @@ import { Post, PostResults, getPosts } from '../../app/api/postAPI'
 interface PostsState {
   posts: Post[] | null
   error: string | null
+  loading: boolean
 }
 
 const initialState = {
   posts: [],
-  error: null
+  error: null,
+  loading: false
 } as PostsState;
 
-const posts = createSlice({
+const postsResults = createSlice({
   name: 'posts',
   initialState,
   reducers: {
+    getPostsStart(state) {
+      state.loading = true
+      state.error = null
+    },
     getPostsSuccess(state, action: PayloadAction<PostResults>) {
-      state.posts = action.payload.posts
+      state.posts = action.payload.postsResults
+      state.loading = false
       state.error = null
     },
     getPostsFailed(state, action: PayloadAction<string>) {
+      state.loading = false
       state.error = action.payload
     }
   }
 })
 
 export const {
+  getPostsStart,
   getPostsSuccess,
   getPostsFailed
-} = posts.actions
+} = postsResults.actions
 
-export default posts.reducer
+export default postsResults.reducer
 
 export const fetchPosts = (): AppThunk => async dispatch => {
   try {
@@ -41,4 +50,5 @@ export const fetchPosts = (): AppThunk => async dispatch => {
   } catch (err) {
     dispatch(getPostsFailed(err.toString()))
   }
+
 }

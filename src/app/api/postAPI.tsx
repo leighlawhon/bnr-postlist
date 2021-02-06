@@ -10,7 +10,7 @@ export interface Post {
 
 
 export interface PostResults {
-  posts: Post[]
+  postsResults: Post[]
 }
 
 export async function getPosts(
@@ -20,7 +20,7 @@ export async function getPosts(
   try {
     const postResponse = await axios.get<Post[]>(url)
     return {
-      posts: postResponse.data
+      postsResults: postResponse.data
     }
   } catch (err) {
     throw err

@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { ImportsNotUsedAsValues } from 'typescript';
-import posts from '../features/postlist/postlistSlice'
+import postsResults from '../features/postlist/postlistSlice'
 const rootReducer = combineReducers({
-  posts
+  postsResults
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
