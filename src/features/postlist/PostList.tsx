@@ -25,8 +25,7 @@ export function PostList() {
 
   const renderedPosts = (
     postsResults.posts ? postsResults.posts.map(post => {
-
-      return <li><h2>{post.title}</h2><p>{post.body}</p></li>
+      return <li key={'post-' + post.id}><h2>{post.title}</h2><p>{post.body}</p></li>
     }) : <div>No Posts Available</div>
   )
 
