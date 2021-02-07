@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 export interface SelectItem {
   label: string,
@@ -6,12 +6,15 @@ export interface SelectItem {
   id: string
 }
 interface SelectState {
-  options: SelectItem[]
+  options: SelectItem[],
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
-export function Select(items: SelectState) {
+
+export function Select(props: SelectState) {
+
   return (
-    <select>
-      {items.options.length > 0 ? items.options.map((option) => {
+    <select onChange={props.onChange}>
+      {props.options.length > 0 ? props.options.map((option) => {
         return (<option key={option.id} value={option.value}>{option.label}</option>)
       }) : null}
     </select>

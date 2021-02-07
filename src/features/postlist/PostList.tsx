@@ -1,13 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { fetchPosts } from './postlistSlice';
 import { RootState } from '../../app/rootReducer';
 import { Select } from '../../app/components/select/Select';
+import { FeaturedPosts } from "./featuredPosts";
+import { SidebarPosts } from "./sidebarPosts";
+import PostState from './postlistSlice'
 
+export const PostContext = React.createContext({
+  postsResults: {
+    posts: null as any,
+    error: null as any,
+    loading: true,
+    userIds: null as any
+  },
+  selectedUserID: ""
+});
 
 export function PostList() {
-  const dispatch = useDispatch()
-  const { postsLoading, postsError, postsResults } = useSelector(
+  const dispatch = useDispatch();
+  const [selectedUserID, setSelectedUserID] = useState('1')
+  const { postsResults } = useSelector(
     (state: RootState) => {
       return {
         postsLoading: state.postsResults.loading,
@@ -22,17 +35,19 @@ export function PostList() {
     dispatch(fetchPosts())
   }, [dispatch])
 
-  const renderedPosts = (
-    postsResults.posts ? postsResults.posts.map(post => {
-      return <li key={`post-${post.id}`}><h2>{post.title}</h2><p>{post.body}</p></li>
-    }) : <div>No Posts Available</div>
-  )
+  function handleOnChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    setSelectedUserID(e.target.value)
+  }
+
 
   return (
-    <div>
-      <Select options={postsResults.userIds} />
-      <ul>{renderedPosts}</ul>
-    </div>
+    <>
+      <Select options={postsResults.userIds!} onChange={handleOnChange} />
+      <PostContext.Provider value={{ postsResults, selectedUserID }}>
+        <FeaturedPosts />
+        <SidebarPosts />
+      </PostContext.Provider>
+    </>
   );
 
 

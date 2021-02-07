@@ -4,11 +4,11 @@ import { AppThunk } from '../../app/store';
 import { Post, PostResults, getPosts } from '../../app/api/postAPI'
 import { SelectItem } from '../../app/components/select/Select'
 
-interface PostsState {
+export interface PostsState {
   posts: Post[] | null
   error: string | null
   loading: boolean
-  userIds: SelectItem[]
+  userIds: SelectItem[] | null
 }
 
 const initialState = {
