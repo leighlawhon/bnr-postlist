@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { fetchPosts } from './postlistSlice';
 import { RootState } from '../../app/rootReducer';
-// import { getPosts, PostResults } from '../../app/api/postAPI'
+import { Select } from '../../app/components/select/Select';
 
 
 export function PostList() {
   const dispatch = useDispatch()
   const { postsLoading, postsError, postsResults } = useSelector(
     (state: RootState) => {
-      console.log(state.postsResults.posts)
       return {
         postsLoading: state.postsResults.loading,
         postsError: state.postsResults.error,
@@ -29,7 +28,12 @@ export function PostList() {
     }) : <div>No Posts Available</div>
   )
 
-  return (<div><ul>{renderedPosts}</ul></div>);
+  return (
+    <div>
+      <Select options={postsResults.userIds} />
+      <ul>{renderedPosts}</ul>
+    </div>
+  );
 
 
 }
