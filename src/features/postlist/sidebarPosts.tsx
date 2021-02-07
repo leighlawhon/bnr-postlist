@@ -19,7 +19,7 @@ export function SidebarPosts() {
         )
         return (
           <div>
-            <h2>Featured Posts</h2>
+            <h2>Other Posts</h2>
             <ul>{renderedPosts}</ul>
           </div>
         )

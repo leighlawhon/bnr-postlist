@@ -5,7 +5,7 @@ import { RootState } from '../../app/rootReducer';
 import { Select } from '../../app/components/select/Select';
 import { FeaturedPosts } from "./featuredPosts";
 import { SidebarPosts } from "./sidebarPosts";
-import PostState from './postlistSlice'
+import './postlist.component.scss';
 
 export const PostContext = React.createContext({
   postsResults: {
@@ -41,13 +41,13 @@ export function PostList() {
 
 
   return (
-    <>
+    <div className="container">
       <Select options={postsResults.userIds!} onChange={handleOnChange} />
       <PostContext.Provider value={{ postsResults, selectedUserID }}>
         <FeaturedPosts />
         <SidebarPosts />
       </PostContext.Provider>
-    </>
+    </div>
   );
 
 
