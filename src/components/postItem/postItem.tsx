@@ -1,15 +1,11 @@
 import React from 'react';
-import { PostContext } from './PostList'
-import { Select } from '../../components/select/Select';
+import { PostContext } from '../../features/postlist/PostList'
 
-export function FeaturedPosts() {
+export function PostItem() {
 
   return (
     <PostContext.Consumer>
-      {context => {
-        function handleOnChange(e: React.ChangeEvent<HTMLSelectElement>) {
-          context.setSelectedUserID(e.target.value)
-        }
+      {(context: any) => {
         if (context === undefined) {
           throw new Error('CountConsumer must be used within a CountProvider')
         }
@@ -21,12 +17,7 @@ export function FeaturedPosts() {
             return <li key={`post-${post.id}`}><h2>{post.title}</h2><p>{post.body}</p></li>
           }) : <div>No Posts Available</div>
         )
-        return (
-          <div>
-            <h2>Featured Posts <Select options={context.postsResults.userIds!} onChange={handleOnChange} /></h2>
-            <ul>{renderedPosts}</ul>
-          </div>
-        )
+        return (<ul>{renderedPosts}</ul>)
       }}
 
     </PostContext.Consumer>

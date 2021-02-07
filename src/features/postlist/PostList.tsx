@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { fetchPosts } from './postlistSlice';
 import { RootState } from '../../app/rootReducer';
-import { Select } from '../../app/components/select/Select';
 import { FeaturedPosts } from "./featuredPosts";
 import { SidebarPosts } from "./sidebarPosts";
 import './postlist.component.scss';
@@ -14,7 +13,8 @@ export const PostContext = React.createContext({
     loading: true,
     userIds: null as any
   },
-  selectedUserID: ""
+  selectedUserID: "",
+  setSelectedUserID: null as any
 });
 
 export function PostList() {
@@ -35,19 +35,19 @@ export function PostList() {
     dispatch(fetchPosts())
   }, [dispatch])
 
-  function handleOnChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedUserID(e.target.value)
-  }
-
-
   return (
-    <div className="container">
-      <Select options={postsResults.userIds!} onChange={handleOnChange} />
-      <PostContext.Provider value={{ postsResults, selectedUserID }}>
-        <FeaturedPosts />
-        <SidebarPosts />
-      </PostContext.Provider>
-    </div>
+    <>
+      <div className="container">
+        <PostContext.Provider value={{ postsResults, selectedUserID, setSelectedUserID }}>
+          <div className="featured">
+            <FeaturedPosts />
+          </div>
+          <div className="other">
+            <SidebarPosts />
+          </div>
+        </PostContext.Provider>
+      </div>
+    </>
   );
 
 

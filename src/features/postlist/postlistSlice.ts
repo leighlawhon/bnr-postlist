@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppThunk } from '../../app/store';
 import { Post, PostResults, getPosts } from '../../app/api/postAPI'
-import { SelectItem } from '../../app/components/select/Select'
+import { SelectItem } from '../../components/select/Select'
 
 export interface PostsState {
   posts: Post[] | null
