@@ -1,30 +1,15 @@
 import React from 'react';
+import { PostItem } from '../../components/postItem/postItem';
 import { PostContext } from './PostList'
 
 export function SidebarPosts() {
 
   return (
-    <PostContext.Consumer>
-      {context => {
-        if (context === undefined) {
-          throw new Error('CountConsumer must be used within a CountProvider')
-        }
-        const filteredPosts = context.postsResults.posts.filter((post: any) => {
-          return post.userId.toString() !== context.selectedUserID
-        })
-        const renderedPosts = (
-          filteredPosts ? filteredPosts.map((post: any) => {
-            return <li key={`post-${post.id}`}><h2>{post.title}</h2><p>{post.body}</p></li>
-          }) : <div>No Posts Available</div>
-        )
-        return (
-          <div>
-            <h2>Other Posts</h2>
-            <ul>{renderedPosts}</ul>
-          </div>
-        )
-      }}
 
-    </PostContext.Consumer>
+    <div>
+      <h2>Other Posts</h2>
+      <PostItem />
+    </div>
+
   )
 }
