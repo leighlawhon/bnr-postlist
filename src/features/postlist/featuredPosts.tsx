@@ -1,9 +1,9 @@
 import React from 'react';
 import { PostContext } from './PostList'
-import { Select } from '../../components/select/Select';
-import { PostItem } from '../../components/postItem/postItem';
+import Select from '../../components/select/Select';
+import PostItem from '../../components/postItem/postItem';
 
-export function FeaturedPosts() {
+export default function FeaturedPosts() {
 
   return (
     <PostContext.Consumer>
@@ -16,7 +16,7 @@ export function FeaturedPosts() {
         }
         return (
           <div>
-            <h2>Featured Posts <Select options={context.postsResults.userIds!} onChange={handleOnChange} /></h2>
+            <h2 data-testid="featured-author">Featured Author: <Select options={context.postsResults.userIds!} onChange={handleOnChange} /></h2>
             <PostItem featured />
           </div>
         )

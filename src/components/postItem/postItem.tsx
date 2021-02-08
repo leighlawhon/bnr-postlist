@@ -1,7 +1,7 @@
 import React from 'react';
 import { PostContext } from '../../features/postlist/PostList'
 
-export function PostItem(props: { featured?: boolean }) {
+export default function PostItem(props: { featured?: boolean }) {
   // interface PostItemState {
   //   featured?: boolean
   // }

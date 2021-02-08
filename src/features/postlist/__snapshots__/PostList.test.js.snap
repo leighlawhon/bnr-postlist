@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My Connected React-Redux Component should render with given state from Redux store 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="featured"
+  >
+    <div>
+      <h2
+        data-testid="featured-author"
+      >
+        Featured Author: 
+        <select
+          onChange={[Function]}
+        />
+      </h2>
+      <ul />
+    </div>
+  </div>
+  <div
+    className="other"
+  >
+    <div>
+      <h2>
+        Other Posts
+      </h2>
+      <ul />
+    </div>
+  </div>
+</div>
+`;

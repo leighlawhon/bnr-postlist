@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { fetchPosts } from './postlistSlice';
 import { RootState } from '../../app/rootReducer';
-import { FeaturedPosts } from "./featuredPosts";
-import { SidebarPosts } from "./sidebarPosts";
+import FeaturedPosts from "./FeaturedPosts";
+import { SidebarPosts } from "./SidebarPosts";
 import './postlist.component.scss';
 
 export const PostContext = React.createContext({
@@ -17,7 +17,7 @@ export const PostContext = React.createContext({
   setSelectedUserID: null as any
 });
 
-export function PostList() {
+export default function PostList() {
   const dispatch = useDispatch();
   const [selectedUserID, setSelectedUserID] = useState('1')
   const { postsResults } = useSelector(

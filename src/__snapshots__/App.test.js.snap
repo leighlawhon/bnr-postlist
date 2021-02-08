@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My App Component should render 1`] = `
+<div
+  className="App"
+>
+  <header />
+  <main
+    className=""
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="featured"
+      >
+        <div>
+          <h2
+            data-testid="featured-author"
+          >
+            Featured Author: 
+            <select
+              onChange={[Function]}
+            />
+          </h2>
+          <ul />
+        </div>
+      </div>
+      <div
+        className="other"
+      >
+        <div>
+          <h2>
+            Other Posts
+          </h2>
+          <ul />
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;

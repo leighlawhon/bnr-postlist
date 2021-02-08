@@ -1,6 +1,5 @@
 import React from 'react';
-import { PostItem } from '../../components/postItem/postItem';
-import { PostContext } from './PostList'
+import PostItem from '../../components/postItem/postItem';
 
 export function SidebarPosts() {
 

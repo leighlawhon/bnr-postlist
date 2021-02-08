@@ -1,15 +1,13 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import store from './app/store';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { render as rtlRender } from '@testing-library/react'
 
-test('renders learn react link', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
 
-  expect(getByText(/learn/i)).toBeInTheDocument();
+jest.mock('./features/postlist/PostList', () => () => (<div>Hello World</div>));
+
+test('renders', () => {
+  const { container } = rtlRender(<App />);
+  expect(container.textContent)
+    .toMatch('Hello World');
 });
+

@@ -10,7 +10,7 @@ interface SelectState {
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export function Select(props: SelectState) {
+export default function Select(props: SelectState) {
 
   return (
     <select onChange={props.onChange}>
