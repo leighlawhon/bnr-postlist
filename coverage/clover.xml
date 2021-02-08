@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1612793420248" clover="3.2.0">
+  <project timestamp="1612793420248" name="All files">
+    <metrics statements="13" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="5" elements="21" coveredelements="17" complexity="0" loc="13" ncloc="13" packages="1" files="2" classes="2"/>
+    <file name="PostList.tsx" path="/Users/lawhl/Sites/bnr/bnr-postlist/src/features/postlist/PostList.tsx">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="25" count="2" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+    </file>
+    <file name="featuredPosts.tsx" path="/Users/lawhl/Sites/bnr/bnr-postlist/src/features/postlist/featuredPosts.tsx">
+      <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="14" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+    </file>
+  </project>
+</coverage>
